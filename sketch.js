@@ -28,7 +28,7 @@ function draw() {
 }
 
 
-function mousePressed() {
+function touchStarted() {
   for (let i = 0; i < 10; i++) {
     if (i < 3) {
       if (collide(col_0[i])) {
