@@ -5,6 +5,9 @@ let col_2 = [3];
 let w = 80;
 let anchor = 100;
 
+let touched = false;
+let time = 0;
+
 function setup() {
   createCanvas(300, 400);
   for (let i = 0; i < 4; i++) {
@@ -25,27 +28,38 @@ function draw() {
     }
     col_1[i].show();
   }
+  time--;
+  if (time === 0) {
+    touched = false;
+  }
+  if (time < 0) {
+    time = 0;
+  }
 }
 
 
 function touchStarted() {
-  for (let i = 0; i < 10; i++) {
-    if (i < 3) {
-      if (collide(col_0[i])) {
-        col_0[i].changeVal();
-        break;
-      }
-    } else if (i < 7) {
-      if (collide(col_1[i - 3])) {
-        col_1[i - 3].changeVal();
-        break;
-      }
-    } else {
-      if (collide(col_2[i - 7])) {
-        col_2[i - 7].changeVal();
-        break;
+  if (!touched) {
+    for (let i = 0; i < 10; i++) {
+      if (i < 3) {
+        if (collide(col_0[i])) {
+          col_0[i].changeVal();
+          break;
+        }
+      } else if (i < 7) {
+        if (collide(col_1[i - 3])) {
+          col_1[i - 3].changeVal();
+          break;
+        }
+      } else {
+        if (collide(col_2[i - 7])) {
+          col_2[i - 7].changeVal();
+          break;
+        }
       }
     }
+    touched = true;
+    time = 5;
   }
 }
 
