@@ -59,7 +59,7 @@ function touchStarted() {
       }
     }
     touched = true;
-    time = 5;
+    time = 15;
   }
 }
 
